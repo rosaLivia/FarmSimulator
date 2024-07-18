@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style>
-/* Estilos globais */
+
 body {
   font-family: Arial, sans-serif;
 }

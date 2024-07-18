@@ -17,6 +17,7 @@
       </div>
         <button type="submit">ACESSAR CONTA</button>
       </form>
+      <a href="https://exemplo.com" class= "text3">Esqueci minha senha</a> 
     </div>
   </template>
   
@@ -61,7 +62,14 @@
     margin-bottom: 12px;
 
   }
-
+  .text3 {
+      font-weight: normal; 
+      font-size: 14px;
+      display: block; 
+      text-align: center; 
+      margin: auto; 
+      text-decoration: none; 
+    }
   form div {
     margin-bottom: 12px;
   }
