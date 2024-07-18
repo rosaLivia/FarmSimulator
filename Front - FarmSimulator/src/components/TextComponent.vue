@@ -47,8 +47,8 @@
   
   .button {
     padding: 10px 150px;
-    font-size: 16px;
     font-weight: bold;
+    font-size: 16px;
     color: black;
     background-color: #FEE17B;
     border: none;

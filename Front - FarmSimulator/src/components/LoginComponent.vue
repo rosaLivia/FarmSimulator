@@ -69,6 +69,7 @@
       text-align: center; 
       margin: auto; 
       text-decoration: none; 
+      margin-top: 5px;
     }
   form div {
     margin-bottom: 12px;
