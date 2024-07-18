@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Div Formatada</title>
-  <style>
+<script>
+export default {
+
+}
+</script>
+
+<template>
+    <div class="container">
+        <b>NOVO?</b>
+        <p>Criar uma conta é fácil! Informe seus dados e uma senha para aproveitar todos os benefícios de ter uma conta</p>
+        <button class="button">CADASTRE-SE</button>
+    </div>
+</template>
+
+<style>
     .container {
       font-family: Arial, sans-serif;
       max-width: 400px;
@@ -45,13 +53,4 @@
     .button:hover {
       background-color: darkgoldenrod;
     }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <b>NOVO?</b>
-    <p>Criar uma conta é fácil! Informe seus dados e uma senha para aproveitar todos os benefícios de ter uma conta</p>
-    <button class="button">CADASTRE-SE</button>
-  </div>
-</body>
-</html>
+</style>
