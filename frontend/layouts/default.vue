@@ -19,4 +19,8 @@
         font-style: normal;
     }
 
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 </style>

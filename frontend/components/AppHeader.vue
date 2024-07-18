@@ -16,14 +16,14 @@ export default {
 <template>
     <header>
         <!-- TODO: Logo -->
-        <h2>DrograFarma</h2>
+        <h2><NuxtLink to="/">DrograFarma</NuxtLink></h2>
         <hr>
         <input id="search-input" type="text" placeholder="O que deseja encontrar?">
         <hr>
         <div>
             <!-- TODO: Icon -->
             <p>Minha conta</p>
-            <p><b>Entrar</b></p>
+            <b><NuxtLink to="/login">Entrar</NuxtLink></b>
         </div>
         <hr>
         <div>
