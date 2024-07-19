@@ -1,56 +1,54 @@
-<script>
-export default {
-
-}
-</script>
-
 <template>
-    <div class="container">
-        <b>NOVO?</b>
-        <p>Criar uma conta é fácil! Informe seus dados e uma senha para aproveitar todos os benefícios de ter uma conta</p>
-        <button class="button">CADASTRE-SE</button>
+  <div class="container mx-auto mt-3">
+    <div class="flex flex-col md:flex-row justify-center gap-3 items-start">
+      <Card class="card">
+        <template #content>
+          <div class="card-content">
+            <h2 class="text-xl font-semibold">Acesse sua conta</h2>
+            <p>Informe os seus dados abaixo para acessá-la.</p>
+            <form class="flex flex-col gap-3">
+              <InputText type="text" id="Email" v-model="email" required placeholder="Email" />
+              <InputText type="password" id="password" v-model="password" required placeholder="Senha" />
+              <div class="flex items-center">
+                <Checkbox v-model="lembrar" inputId="lembrar" name="lembrar" :binary="true" />
+                <label for="lembrar" class="ml-2"> Lembrar minhas credenciais </label>
+              </div>
+              <Button type="submit" label="ACESSAR CONTA" />
+              <Button as="router-link" label="Esqueci minha senha" to="/" class="text-sm" link/>
+            </form>
+          </div>
+        </template>
+      </Card>
+      <Card class="card">
+        <template #content>
+          <div class="card-content">
+            <h2 class="text-xl font-semibold">Novo por aqui?</h2>
+            <p>Criar uma conta é fácil! Informe seus dados e uma senha para aproveitar todos os benefícios de ter uma conta.</p>
+            <Button as="router-link" label="CADASTRE-SE" to="/cadastro" />
+          </div>
+        </template>
+      </Card>
     </div>
+  </div>
 </template>
 
-<style>
-    .container {
-      font-family: Arial, sans-serif;
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
+<script setup>
+  const email = ref('');
+  const password = ref('');
+  const lembrar = ref(false);
+</script>
 
-    .container b {
-      display: block;
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .container p {
-      font-size: 14px;
-      margin-bottom: 20px;
-      
-    }
-
-    .button {
-      padding: 10px 150px;
-      font-size: 16px;
-      font-weight: bold;
-      font-family: Roboto;
-      color: black;
-      background-color: #FEE17B;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .button:hover {
-      background-color: darkgoldenrod;
-    }
+<style scoped>
+  .card {
+    @apply md:basis-1/2 w-full;
+  }
+  /*
+  O código acima é equivalente a:
+  .card {
+    flex-basis: 50%;
+    width: 100%; 
+   */
+  .card-content {
+    @apply flex flex-col gap-2;
+  }
 </style>

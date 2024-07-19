@@ -5,9 +5,7 @@ export default {
 </script>
 
 <template>
-  <div>
-    <h1>Index</h1>
-  </div>
+    <p>cadastro</p>
 </template>
 
 <style>
