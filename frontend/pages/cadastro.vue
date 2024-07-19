@@ -16,14 +16,14 @@
               <InputText type="text" id="endereco" v-model="endereco" placeholder="Endereço" />
               <div class="flex gap-3">
                 <div class="field basis-1/2">
-                  <Password class="w-full" [inputStyle]="{'width': '100%'}" id="senha" v-model="senha" placeholder="Senha" aria-describedby="password-help" :invalid="errors.senha" :feedback="false" toggleMask />
+                  <Password class="w-full" :inputStyle="{'width': '100%'}" id="senha" v-model="senha" placeholder="Senha" aria-describedby="password-help" :invalid="errors.senha" :feedback="false" toggleMask />
                   <small id="password-help" class="p-error">
                     {{ errors.senha }}
                   </small>
                 </div>
 
                 <div class="field basis-1/2">
-                  <Password class="w-full" [inputStyle]="{'width': '100%'}" id="confirmar-senha" v-model="confirmarSenha" placeholder="Confirmar senha" aria-describedby="password-confirm-help" :invalid="errors.confirmarSenha" :feedback="false" toggleMask />
+                  <Password class="w-full" :inputStyle="{'width': '100%'}" id="confirmar-senha" v-model="confirmarSenha" placeholder="Confirmar senha" aria-describedby="password-confirm-help" :invalid="errors.confirmarSenha" :feedback="false" toggleMask />
                   <small id="password-confirm-help" class="p-error">
                     {{ errors.confirmarSenha }}
                   </small>
