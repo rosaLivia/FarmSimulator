@@ -6,15 +6,14 @@
           <div class="card-content">
             <h2 class="text-xl font-semibold">Acesse sua conta</h2>
             <p>Informe os seus dados abaixo para acessá-la.</p>
-            <form class="flex flex-col gap-3">
+            <form class="flex flex-col gap-3" v-on:submit.prevent="handleSignIn">
               <InputText type="text" id="Email" v-model="email" required placeholder="Email" />
               <InputText type="password" id="password" v-model="password" required placeholder="Senha" />
               <div class="flex items-center">
                 <Checkbox v-model="lembrar" inputId="lembrar" name="lembrar" :binary="true" />
-                <label for="lembrar" class="ml-2"> Lembrar minhas credenciais </label>
+                <label for="lembrar" class="ml-2">Lembrar minhas credenciais</label>
               </div>
               <Button type="submit" label="ACESSAR CONTA" />
-              <Button as="router-link" label="Esqueci minha senha" to="/" class="text-sm" link/>
             </form>
           </div>
         </template>
@@ -33,14 +32,24 @@
 </template>
 
 <script setup>
-  const email = ref('');
-  const password = ref('');
-  const lembrar = ref(false);
+const email = ref('');
+const password = ref('');
+const lembrar = ref(false);
+
+async function handleSignIn() {
+  let formData = {
+    email: email.value,
+    password: password.value,
+    lembrar: lembrar.value,
+  };
+
+  console.log(formData);
+}
 </script>
 
 <style scoped>
   .card {
-    @apply md:basis-1/2 w-full;
+    @apply md:basis-1/4 w-full;
   }
   /*
   O código acima é equivalente a:

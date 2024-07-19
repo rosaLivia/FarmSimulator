@@ -1,5 +1,6 @@
 <script setup>
  const price = ref(0);
+ const pesquisa = ref('');
 
 	function formatCurrency(value) {
 		return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -15,7 +16,7 @@
 			<Divider layout="vertical" />
 			<IconField>
 				<InputIcon class="pi pi-search" />
-				<InputText class="min-w-[48rem]" v-model="value1" placeholder="O que deseja encontrar?" />
+				<InputText class="md:min-w-[48rem]" v-model="pesquisa" placeholder="O que deseja encontrar?" />
 			</IconField>
 			<Divider layout="vertical" />
 			<div class="flex gap-3 items-center">
