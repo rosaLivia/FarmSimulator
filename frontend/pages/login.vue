@@ -20,10 +20,14 @@
                 </small>
               </div>
               <div class="flex items-center">
-                <Checkbox v-model="rememberMe" inputId="rememberMe" name="lembrar" :binary="true" />
+                <Checkbox v-model="rememberMe" inputId="rememberMe" :binary="true" />
                 <label for="rememberMe" class="ml-2">Lembrar minhas credenciais</label>
               </div>
+              <small id="invalid-credentials" v-if="invalidCredentials" class="p-error">
+                  Email e/ou senha inválidos
+              </small>
               <Button type="submit" label="ACESSAR CONTA" />
+              <Button as="router-link" to="#" label="Esqueci minha senha" size="small" link />
             </form>
           </div>
         </template>
@@ -42,7 +46,6 @@
 </template>
 
 <script setup>
-import Password from 'primevue/password';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -59,8 +62,11 @@ const [email] = defineField('email');
 const [password] = defineField('password');
 const [rememberMe] = defineField('rememberMe');
 
+const invalidCredentials = ref(false);
+
 const handleSignIn = handleSubmit(async (values) => {
   console.log(values);
+  invalidCredentials.value = true;
   resetForm();
 });
 </script>
