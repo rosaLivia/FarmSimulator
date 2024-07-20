@@ -6,7 +6,7 @@
           <div class="card-content">
             <h2 class="text-xl font-semibold">Criar minha conta</h2>
             <p>Informe os seus dados abaixo para criar sua conta.</p>
-            <form class="flex flex-col gap-3" @submit="handleSignUp">
+            <form class="flex flex-col gap-3" @submit.prevent="handleSignUp">
               <div class="field">
                 <InputText type="text" v-model="name" aria-describedby="name-help" placeholder="Nome*" :invalid="!!errors.name" />
                 <small id="name-help" class="p-error">
@@ -57,11 +57,11 @@
               <div class="flex items-center">
                 <div class="field">
                   <div class="flex items-center">
-                    <Checkbox inputId="term" v-model="term" aria-describedby="term-help" :binary="true" :invalid="errors.term === null" />
-                    <label for="term" class="ml-2">Estou ciente e CONCORDO com os termos de aceite e políticas de privacidade da MegaFarma.</label>
+                    <Checkbox inputId="terms_accepted" v-model="terms_accepted" aria-describedby="term-help" :binary="true" :invalid="errors.terms_accepted === null" />
+                    <label for="terms_accepted" class="ml-2">Estou ciente e CONCORDO com os termos de aceite e políticas de privacidade da MegaFarma.</label>
                   </div>
                   <small id="term-help" class="p-error">
-                    {{ errors.term }}
+                    {{ errors.terms_accepted }}
                   </small>
                 </div>
               </div>              
@@ -73,10 +73,16 @@
       </Card>
     </div>
   </div>
+  <div class="absolute top-0 left-0 flex w-full h-full items-center bg-slate-900/50" v-if="loading">
+    <ProgressSpinner />
+  </div>
 </template>
 
 <script setup>
 import * as yup from 'yup';
+
+const toast = useToast();
+const router = useRouter()
 
 const schema = yup.object({
   name: yup.string().required('O nome é obrigatório'),
@@ -90,7 +96,7 @@ const schema = yup.object({
     .matches(/\d/, 'A senha deve conter pelo menos um número')
     .matches(/[^a-zA-Z\d]/, 'A senha deve conter pelo menos um caractere especial'),
   passwordConfirm: yup.string().required('A confirmação de senha é obrigatória').oneOf([yup.ref('password'), null], 'As senhas não conferem'),
-  term: yup.boolean().required('É necessário aceitar os termos').isTrue('Você deve aceitar os termos de aceite e políticas de privacidade'),
+  terms_accepted: yup.boolean().required('É necessário aceitar os termos').isTrue('Você deve aceitar os termos de aceite e políticas de privacidade'),
 })
 
 const { defineField, handleSubmit, resetForm, errors } = useForm({
@@ -104,11 +110,33 @@ const [tel] = defineField('tel');
 const [addres] = defineField('address');
 const [password] = defineField('password');
 const [passwordConfirm] = defineField('passwordConfirm');
-const [term] = defineField('term');
+const [terms_accepted] = defineField('terms_accepted');
+
+const loading = ref(false);
 
 const handleSignUp = handleSubmit(async (values) => {
-  console.log(values);
-  resetForm();
+  try {
+    const data = await $fetch('http://localhost/api/users', {
+      method: 'POST',
+      body: values,
+      onRequest: () => {
+        loading.value = true;
+      },
+      onResponse: () => {
+        loading.value = false;
+      }
+    });
+
+    if(data.error) {
+      throw new Error(data.message);
+    }
+
+    toast.add({severity:'success', summary: 'Cadastro realizado com sucesso', life: 5000});
+
+    router.push('/login');
+  } catch (error) {
+    toast.add({severity:'error', summary: 'Erro ao cadastrar', detail: error.message, life: 5000});
+  }
 });
 </script>
 
