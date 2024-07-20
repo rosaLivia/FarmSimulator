@@ -126,13 +126,4 @@ const handleSignUp = handleSubmit(async (values) => {
 .card-content {
   @apply flex flex-col gap-2;
 }
-
-.p-error {
-  display: block;
-  @apply text-red-500;
-}
-
-.field > * {
-  width: 100%;
-}
 </style>
