@@ -1,5 +1,10 @@
 @import 'primeicons/primeicons.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.p-error {
+    display: block;
+    @apply text-red-500;
+  }
+  
+.field > * {
+width: 100%;
+}

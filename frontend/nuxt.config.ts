@@ -23,8 +23,7 @@ const MyPreset = definePreset(Aura, {
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['assets/css/main.css'],
-  modules: ["@primevue/nuxt-module"],
-
+  modules: ["@primevue/nuxt-module", '@vee-validate/nuxt', "@nuxtjs/tailwindcss"],
   primevue: {
     options: {
         theme: {
@@ -34,13 +33,6 @@ export default defineNuxtConfig({
             }
         }
     }
-  },
-
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
   },
   compatibilityDate: '2024-07-18'
 })
