@@ -1,19 +1,21 @@
 <template>
-  <h2 class="text-2xl font-bold text-primary">
+  <h2 class="text-2xl font-bold text-primary mb-1">
     <slot name="title"></slot>
   </h2>
   <div class="relative">
-    <Swiper
-      :slides-per-view="1"
-      navigation
+    <div v-if="!products || products.length == 0" class="flex justify-center h-60 items-center ">
+      <p class="font-medium">Lamentamos, nenhum produto encontrado.</p>
+    </div>
+    <Swiper v-else
+      :slides-per-view="5"
+      :slides-per-group="5"
+      :spaceBetween="16"
       :modules="[SwiperNavigation, SwiperPagination, SwiperFreeMode]"
-      :pagination="{ clickable: true }"
-      freeMode
+      navigation
+      :pagination="{ clickable: true}"
     >
-      <SwiperSlide v-for="n in chunks.length">
-        <div class="grid grid-cols-5 mx-1">
-          <ProductCard v-for="product in chunks[n - 1]" :product="product" />
-        </div>
+      <SwiperSlide v-for="product in products">
+        <ProductCard :key="product.id" :product="product" />
       </SwiperSlide>
     </Swiper>
   </div>
@@ -22,18 +24,7 @@
 <script setup>
   const props = defineProps({
     products: Array,
-    groupSize: {
-      type: Number,
-      default: 5
-    }
   })
-
-  const { products, groupSize } = props;
-  const chunks = [];
-
-  for (let i = 0; i < products.length; i += groupSize) {
-    chunks.push(products.slice(i, i + groupSize));
-  }
 </script>
 
 <style>

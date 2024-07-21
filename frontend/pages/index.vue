@@ -24,12 +24,12 @@
   </Container>
   <main>
     <Container>
-      <Showcase :products="products" :groupSize="5">
+      <Showcase :products="products">
         <template #title>
           Produtos em destaque
         </template>
       </Showcase>
-      <Showcase :products="products" :groupSize="5">
+      <Showcase :products="products">
         <template #title>
           Descontos da semana
         </template>
@@ -39,15 +39,7 @@
 </template>
 
 <script setup>
-  const products = ref([]);
-  for (let i = 0; i < 14; i++) { 
-    products.value.push({
-      id: i,
-      name: `Dipirona Monoidratada 500mg/mL frasco c/ 20mL`,
-      price: 2.99,
-
-    });
-  }
+  const { data: products } = await useFetch('http://localhost:3001/produtos');
 </script>
 
 
