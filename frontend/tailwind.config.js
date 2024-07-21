@@ -11,6 +11,7 @@ export default {
   theme: {
     extend: {},
   },
+  darkMode: ['selector', '.p-dark-mode'],
   plugins: [require('tailwindcss-primeui')]
 }
 

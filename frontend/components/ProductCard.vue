@@ -4,7 +4,7 @@
       <img src="https://placehold.co/170x170">
       <p>{{ product.name }}</p>
       <p class="text-2xl font-bold">{{ formatCurrency(product.price) }}</p>
-      <button class="bg-primary text-white rounded-md p-2">Comprar</button>
+      <Button>Comprar</Button>
     </div>
   </div>
 </template>
