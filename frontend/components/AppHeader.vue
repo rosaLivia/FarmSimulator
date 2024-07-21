@@ -1,10 +1,7 @@
 <script setup>
- const price = ref(0);
- const pesquisa = ref('');
-
-	function formatCurrency(value) {
-		return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-	}
+const { formatCurrency } = useCurrency();
+const price = ref(0);
+const pesquisa = ref('');
 </script>
 
 <template>
