@@ -5,7 +5,7 @@ const pesquisa = ref('');
 </script>
 
 <template>
-	<header class="bg-white red-line">
+	<header class="sticky top-0 bg-white red-line z-10">
 		<div class="container mx-auto flex p-3 items-center justify-center">
 			<NuxtLink to="/">
 				<Image src="/img/logo.png" alt="Image" width="120" />

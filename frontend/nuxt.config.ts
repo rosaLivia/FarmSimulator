@@ -23,7 +23,13 @@ const MyPreset = definePreset(Aura, {
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['assets/css/main.css'],
-  modules: ['@primevue/nuxt-module', '@vee-validate/nuxt', '@nuxtjs/tailwindcss', 'nuxt-swiper'],
+  modules: [
+    '@primevue/nuxt-module',
+    '@vee-validate/nuxt',
+    '@nuxtjs/tailwindcss',
+    'nuxt-swiper',
+    "@nuxt/image"
+  ],
   primevue: {
     options: {
         theme: {
@@ -33,6 +39,9 @@ export default defineNuxtConfig({
             }
         }
     }
+  },
+  image: {
+    domains: ['placehold.co']
   },
   compatibilityDate: '2024-07-18'
 })

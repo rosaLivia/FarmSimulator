@@ -12,13 +12,13 @@
       }"
     >
       <SwiperSlide>
-        <img src="https://placehold.co/1536x320/cornflowerblue/white" alt="Imagem 1" />
+        <NuxtImg src="https://placehold.co/1536x320/cornflowerblue/white" alt="Imagem 1" sizes="100vw" />
       </SwiperSlide>
       <SwiperSlide>
-        <img src="https://placehold.co/1536x320/crimson/white" alt="Imagem 2" />
+        <NuxtImg src="https://placehold.co/1536x320/crimson/white" alt="Imagem 2" sizes="100vw" />
       </SwiperSlide>
       <SwiperSlide>
-        <img src="https://placehold.co/1536x320/darkseagreen/white" alt="Imagem 3" />
+        <NuxtImg src="https://placehold.co/1536x320/darkseagreen/white" alt="Imagem 3" sizes="100vw" />
       </SwiperSlide>
     </Swiper>
   </Container>

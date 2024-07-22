@@ -33,6 +33,10 @@
     position: relative;
   }
 
+  .swiper-slide {
+    @apply h-auto;
+  }
+
   .swiper-pagination-bullet-active {
     @apply bg-primary;
   }
