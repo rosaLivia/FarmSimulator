@@ -28,10 +28,12 @@ export default defineNuxtConfig({
     '@vee-validate/nuxt',
     '@nuxtjs/tailwindcss',
     'nuxt-swiper',
-    "@nuxt/image"
+    "@nuxt/image",
+    'radix-vue/nuxt'
   ],
   primevue: {
     options: {
+        ripple: true,
         theme: {
             preset: MyPreset,
             options: {

@@ -18,6 +18,7 @@
     "nuxt-swiper": "^1.2.2",
     "primeicons": "^7.0.0",
     "primevue": "^4.0.0",
+    "radix-vue": "^1.9.2",
     "tailwindcss-primeui": "^0.3.4",
     "vue": "latest",
     "yup": "^1.4.0"
