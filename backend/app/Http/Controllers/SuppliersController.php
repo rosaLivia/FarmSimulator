@@ -1,7 +1,6 @@
 <?php
 //Aqui foi importado os elementos que serão usados ao longo do controller.
 namespace App\Http\Controllers;
-
 use App\Models\Suppliers;
 use Illuminate\Http\Request;
 

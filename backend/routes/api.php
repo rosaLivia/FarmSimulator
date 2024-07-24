@@ -22,4 +22,8 @@ Route::post('/products', [ProductController::class, 'store']);
 Route::put('/products/{id}', [ProductController::class, 'update']);
 Route::delete('/products{id}', [ProductController::class, 'destroy']);
 
-Route::apiResource('suppliers', SuppliersController::class);
+Route::get('/suppliers', [SuppliersController::class, 'index']);
+Route::get('/suppliers/{id}', [SuppliersController::class, 'show']);
+Route::post('/suppliers', [SuppliersController::class, 'store']);
+Route::put('/suppliers/{id}', [SuppliersController::class, 'update']);
+Route::delete('/suppliers{id}', [SuppliersController::class, 'destroy']);
