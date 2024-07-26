@@ -39,7 +39,23 @@
 </template>
 
 <script setup>
-  const { data: products } = await useFetch('http://localhost:3001/produtos');
+   const products = ref([]);
+
+for (let i = 0; i < 10; i++){
+  products.value.push({
+    "id": i,
+    "name": `Product ${i}`,
+    "valueFrom": 1000,
+    "valueTo": 100,
+    "discountPercentage": 90,
+    "brand": "Genérico"
+
+
+  });
+}
+
+
+
 </script>
 
 
