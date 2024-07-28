@@ -1,9 +1,8 @@
 <template>
-
 <div class="md:container md:mx-auto"> 
   <div class="flex flex-col items-center mt-3 flex-grow">
     <div class="justify-center mb-5">
-      <Stepper v-model:activeStep="activeStep" class="basis-[50rem]">
+      <Stepper value="1" linear class="basis-[50rem]"> 
         <StepList>
           <Step value="1">
             <div class="flex items-center gap-3">
@@ -36,6 +35,7 @@
             </div>
           </Step>
         </StepList>
+        
         <StepPanels>
           <StepPanel v-slot="{ activateCallback }" value="1">
               <div class="flex mt-2 ml-5">
@@ -250,6 +250,7 @@
 </template>
 
 <script setup>
+
 
 </script>
 
