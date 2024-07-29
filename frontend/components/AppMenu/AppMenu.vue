@@ -1,5 +1,5 @@
 <template>
-    <ul class="layout-menu">
+    <ul>
         <template v-for="(item, i) in model" :key="item">
             <AppMenuItem v-if="!item.separator" :item="item" :index="i"></AppMenuItem>
         </template>
@@ -9,6 +9,7 @@
 <script setup>
 const model = ref([
     {
+        label: 'Dashboard',
         items: [
             { label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/admin/dashboard'},
             { label: 'Produtos', icon: 'pi pi-fw pi-box', to: '/admin/produtos'},

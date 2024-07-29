@@ -1,18 +1,21 @@
 <template>
-    <li :class="{ 'layout-root-menuitem': root, 'active-menuitem': isActiveMenu }">
-        <div v-if="root && item.visible !== false" class="layout-menuitem-root-text">{{ item.label }}</div>
-        <a v-if="(!item.to || item.items) && item.visible !== false" :href="item.url" @click="itemClick($event, item, index)" :class="item.class" :target="item.target" tabindex="0">
-            <i :class="item.icon" class="layout-menuitem-icon"></i>
-            <span class="layout-menuitem-text">{{ item.label }}</span>
-            <i class="pi pi-fw pi-angle-down layout-submenu-toggler" v-if="item.items"></i>
+    <li>
+        <div v-if="root && item.visible !== false" :class="{ 'font-bold mx-2 text-sm uppercase': root }">{{ item.label }}</div>
+        <!---->
+        <a v-if="(!item.to || item.items) && item.visible !== false" :href="item.url" @click="itemClick($event, item, index)" :class="item.class, { 'hidden': root }" class="flex items-center relative cursor-pointer hover:bg-primary/10" :target="item.target" tabindex="0">
+            <i :class="item.icon" class="mr-2"></i>
+            <span>{{ item.label }}</span>
+            <i class="pi pi-fw pi-angle-down" v-if="item.items"></i>
         </a>
-        <NuxtLink v-if="item.to && !item.items && item.visible !== false" @click="itemClick($event, item, index)" :class="[item.class, { 'active-route': checkActiveRoute(item) }]" tabindex="0" :to="item.to">
-            <i :class="item.icon" class="layout-menuitem-icon"></i>
-            <span class="layout-menuitem-text">{{ item.label }}</span>
-            <i class="pi pi-fw pi-angle-down layout-submenu-toggler" v-if="item.items"></i>
+        <!---->
+        <NuxtLink v-if="item.to && !item.items && item.visible !== false" @click="itemClick($event, item, index)" class="rounded-md py-2 px-4 flex items-center relative cursor-pointer hover:bg-primary/10" :class="[item.class, { 'font-bold text-primary': checkActiveRoute(item) }]" tabindex="0" :to="item.to">
+            <i :class="item.icon" class="mr-2"></i>
+            <span>{{ item.label }}</span>
+            <i class="pi pi-fw pi-angle-up" v-if="item.items"></i>
         </NuxtLink>
+        <!---->
         <Transition v-if="item.items && item.visible !== false" name="layout-submenu">
-            <ul v-show="root ? true : isActiveMenu" class="layout-submenu">
+            <ul v-show="root ? true : isActiveMenu">
                 <AppMenuItem v-for="(child, i) in item.items" :key="i" :item="child" :index="i" :parentItemKey="itemKey" :root="false"></AppMenuItem>
             </ul>
         </Transition>
