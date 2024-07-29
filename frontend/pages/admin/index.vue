@@ -1,14 +1,9 @@
-<script>
-export default {
-
-}
-</script>
-
 <template>
-    <p>
-        Admin
-    </p>
+    a
 </template>
+
+<script setup>
+</script>
 
 <style>
 
