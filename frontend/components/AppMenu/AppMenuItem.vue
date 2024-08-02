@@ -11,7 +11,7 @@
         <NuxtLink v-if="item.to && !item.items && item.visible !== false" @click="itemClick($event, item, index)" class="group rounded-md p-2 flex justify-center relative cursor-pointer hover:bg-primary/10 h-10" :class="[item.class, { 'font-bold text-primary': checkActiveRoute(item) }]" tabindex="0" :to="item.to">
             <div class="flex items-center gap-2 w-full">
                 <i :class="item.icon" style="font-size: 1.25rem"></i>
-                <span :class="[!layoutState.menuActive ? 'hidden group-hover:block absolute left-full ml-6' : '' ]">{{ item.label }}</span>
+                <span :class="[!layoutState.menuActive ? 'hidden group-hover:block absolute left-full ml-6 bg-white rounded-md py-1 px-2' : '' ]">{{ item.label }}</span>
                 <i class="pi pi-fw pi-angle-down" v-if="item.items"></i>
             </div>
         </NuxtLink>
