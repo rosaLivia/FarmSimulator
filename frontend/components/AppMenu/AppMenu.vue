@@ -9,7 +9,6 @@
 <script setup>
 const model = ref([
     {
-        label: 'Dashboard',
         items: [
             { label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/admin/dashboard'},
             { label: 'Produtos', icon: 'pi pi-fw pi-box', to: '/admin/produtos'},

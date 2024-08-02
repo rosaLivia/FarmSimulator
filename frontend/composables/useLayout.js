@@ -1,5 +1,6 @@
 const layoutState = reactive({
     menuActive: true,
+    isMobile: false
 });
 
 export const useLayout = () => {

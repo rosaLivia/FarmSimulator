@@ -1,8 +1,13 @@
 <template>
-    <div class="sticky flex justify-between sm:ml-64 p-3 bg-white shadow-md">
-        <button link class="ml-2" @click="onMenuToggle">
-            <i class="pi pi-bars"></i>
-        </button>
+    <div class="sticky flex justify-between p-2 bg-white shadow-md z-10 h-16 items-center">
+        <div class="flex">
+            <div class="layout-logo flex items-center justify-center">
+                <Image src="/img/logo.png" alt="Logo" width="120" />
+            </div>
+            <button link class="ml-2" @click="onMenuToggle">
+                <i class="pi pi-bars"></i>
+            </button>
+        </div>
         <IconField>
           <InputIcon class="pi pi-search" />
           <InputText class="" placeholder="Pesquisar..." />

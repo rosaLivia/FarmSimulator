@@ -1,17 +1,19 @@
 <template>
     <li>
-        <div v-if="root && item.visible !== false" :class="{ 'font-bold mx-2 text-sm uppercase': root }">{{ item.label }}</div>
+        <div v-if="root && item.visible !== false && layoutState.menuActive" class="font-bold mx-2 text-sm uppercase">{{ item.label }}</div>
         <!---->
-        <a v-if="(!item.to || item.items) && item.visible !== false" :href="item.url" @click="itemClick($event, item, index)" :class="item.class, { 'hidden': root }" class="flex items-center relative cursor-pointer hover:bg-primary/10" :target="item.target" tabindex="0">
+        <!-- <a v-if="(!item.to || item.items) && item.visible !== false" :href="item.url" @click="itemClick($event, item, index)" :class="item.class, { 'hidden': root }" class="flex items-center relative cursor-pointer hover:bg-primary/10" :target="item.target" tabindex="0">
             <i :class="item.icon" class="mr-2"></i>
-            <span>{{ item.label }}</span>
+            <span v-if="layoutState.menuActive">{{ item.label }}</span>
             <i class="pi pi-fw pi-angle-down" v-if="item.items"></i>
-        </a>
+        </a> -->
         <!---->
-        <NuxtLink v-if="item.to && !item.items && item.visible !== false" @click="itemClick($event, item, index)" class="rounded-md py-2 px-4 flex items-center relative cursor-pointer hover:bg-primary/10" :class="[item.class, { 'font-bold text-primary': checkActiveRoute(item) }]" tabindex="0" :to="item.to">
-            <i :class="item.icon" class="mr-2"></i>
-            <span>{{ item.label }}</span>
-            <i class="pi pi-fw pi-angle-up" v-if="item.items"></i>
+        <NuxtLink v-if="item.to && !item.items && item.visible !== false" @click="itemClick($event, item, index)" class="group rounded-md p-2 flex justify-center relative cursor-pointer hover:bg-primary/10 h-10" :class="[item.class, { 'font-bold text-primary': checkActiveRoute(item) }]" tabindex="0" :to="item.to">
+            <div class="flex items-center gap-2 w-full">
+                <i :class="item.icon" style="font-size: 1.25rem"></i>
+                <span :class="[!layoutState.menuActive ? 'hidden group-hover:block absolute left-full ml-6' : '' ]">{{ item.label }}</span>
+                <i class="pi pi-fw pi-angle-down" v-if="item.items"></i>
+            </div>
         </NuxtLink>
         <!---->
         <Transition v-if="item.items && item.visible !== false" name="layout-submenu">
@@ -24,6 +26,8 @@
 
 <script setup>
     const route = useRoute();
+
+    const { layoutState } = useLayout();
 
     const props = defineProps({
         item: {
