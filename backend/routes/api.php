@@ -27,3 +27,45 @@ Route::get('/suppliers/{id}', [SuppliersController::class, 'show']);
 Route::post('/suppliers', [SuppliersController::class, 'store']);
 Route::put('/suppliers/{id}', [SuppliersController::class, 'update']);
 Route::delete('/suppliers{id}', [SuppliersController::class, 'destroy']);
+
+#Rota Recipes
+Route::get('/recipe', [RecipeController::class, 'index']);
+Route::get('/recipe/{id}', [RecipeController::class, 'show']);
+Route::post('/recipe', [RecipeController::class, 'store']);
+Route::put('/recipe/{id}', [RecipeController::class, 'update']);
+Route::delete('/recipe{id}', [RecipeController::class, 'destroy']);
+
+#Rota paymentmethod
+Route::get('/paymentmethod', [PaymentmethodController::class, 'index']);
+Route::get('/paymentmethod/{id}', [PaymentmethodController::class, 'show']);
+Route::post('/paymentmethod', [PaymentmethodController::class, 'store']);
+Route::put('/paymentmethod/{id}', [PaymentmethodController::class, 'update']);
+Route::delete('/paymentmethod{id}', [PaymentmethodController::class, 'destroy']);
+
+#Rota Order
+Route::get('/order', [OrderController::class, 'index']);
+Route::get('/order/{id}', [OrderController::class, 'show']);
+Route::post('/order', [OrderController::class, 'store']);
+Route::put('/order/{id}', [OrderController::class, 'update']);
+Route::delete('/order{id}', [OrderController::class, 'destroy']);
+
+#Rota Employeers
+Route::get('/employeers', [EmployeersController::class, 'index']);
+Route::get('/employeers/{id}', [EmployeersController::class, 'show']);
+Route::post('/employeers', [EmployeersController::class, 'store']);
+Route::put('/employeers/{id}', [EmployeersController::class, 'update']);
+Route::delete('/employeers{id}', [EmployeersController::class, 'destroy']);
+
+#Rotas Deliveries
+Route::get('/deliveries', [DeliveriesController::class, 'index']);
+Route::get('/deliveries/{id}', [DeliveriesController::class, 'show']);
+Route::post('/deliveries', [DeliveriesController::class, 'store']);
+Route::put('/deliveries/{id}', [DeliveriesController::class, 'update']);
+Route::delete('/deliveries{id}', [DeliveriesController::class, 'destroy']);
+
+#Rota Cart
+Route::get('/cart', [CartController::class, 'index']);
+Route::get('/cart/{id}', [CartController::class, 'show']);
+Route::post('/cart', [CartController::class, 'store']);
+Route::put('/cart/{id}', [CartController::class, 'update']);
+Route::delete('/cart{id}', [CartController::class, 'destroy']);
