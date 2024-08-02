@@ -14,9 +14,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'product_code' => 'required|varchar(10)',
             'name' => 'required',
+            'mark' => 'required',
+            'description' => 'sometimes|varchar(100)',
             'price' => 'required|numeric',
-            'stock' => 'required|integer',
+            'instructions' => 'sometimes|varchar(100)',
+            'stock' => 'required|integer'
         ]);
 
         return Product::create($request->all());
@@ -32,9 +36,13 @@ class ProductController extends Controller
         $product = Product::find($id);
 
         $request->validate([
-            'name' => 'sometimes|required',
-            'price' => 'sometimes|required|numeric',
-            'stock' => 'sometimes|required|integer',
+            'product_code' => 'required|varchar(10)',
+            'name' => 'required',
+            'mark' => 'required',
+            'description' => 'sometimes|varchar(100)',
+            'price' => 'required|numeric',
+            'instructions' => 'sometimes|varchar(100)',
+            'stock' => 'required|integer'
         ]);
 
         $product->update($request->all());
