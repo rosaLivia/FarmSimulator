@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Deliveries extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'id',
+        'arrived_date',  #previsao de entrega
+        'codigo',   #codigo de rastreio
+
+    ];
 }
