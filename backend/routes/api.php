@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SuppliersController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\DeliveriesController;
+use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentmethodController;
+use App\Http\Controllers\RecipeController;
 use App\Models\User;
 
 Route::get('/', function () {
@@ -50,11 +56,11 @@ Route::put('/order/{id}', [OrderController::class, 'update']);
 Route::delete('/order{id}', [OrderController::class, 'destroy']);
 
 #Rota Employeers
-Route::get('/employeers', [EmployeersController::class, 'index']);
-Route::get('/employeers/{id}', [EmployeersController::class, 'show']);
-Route::post('/employeers', [EmployeersController::class, 'store']);
-Route::put('/employeers/{id}', [EmployeersController::class, 'update']);
-Route::delete('/employeers{id}', [EmployeersController::class, 'destroy']);
+Route::get('/employeers', [EmployeesController::class, 'index']);
+Route::get('/employeers/{id}', [EmployeesController::class, 'show']);
+Route::post('/employeers', [EmployeesController::class, 'store']);
+Route::put('/employeers/{id}', [EmployeesController::class, 'update']);
+Route::delete('/employeers{id}', [EmployeesController::class, 'destroy']);
 
 #Rotas Deliveries
 Route::get('/deliveries', [DeliveriesController::class, 'index']);
