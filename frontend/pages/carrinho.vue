@@ -37,16 +37,60 @@
         </StepList>
         
         <StepPanels>
-          <StepPanel v-slot="{ activateCallback }" value="1">
+            <StepPanel v-slot="{ activateCallback }" value="1">
               <div class="flex mt-2 ml-5">
                 
                 <Card class="card-left bg-white-200 w-[600px]">
+    
                   <template #content>
-                    <p>Informações adicionais ou outro conteúdo pode ir aqui.</p>
+                    <h2 class="font-semibold" style="margin-bottom: 15px" >PRODUTOS</h2>
+                    <div v-if="cart.length">
+                      <table class="w-full table-auto">
+                        <thead>
+                          <th></th>
+                          <th></th>
+                          <th class="th">Quantidade</th>
+                          <th></th>
+                          <th class="th">Preço</th>
+                          <th></th>
+                       </thead>
+                      
+                     
+                        <tbody>
+                          
+                          <tr v-for="product in cart" :key="product.id" class="border-b">
+                          
+                            <td class="td"><img :src="product.image" class="product-image" /></td>
+                            <td class="td" >{{ product.name }}</td>
+                            <td class="td">{{ product.quantity }}</td>
+                            <td class="td">
+                              <button @click="() => removeProduct(product.id)" class="text-red-500 button-icons">
+                                <i class="pi pi-plus"></i>
+                                <i class=" pi pi-minus"></i>
+                              </button>
+                            
+                              
+                            </td>
+                            <td class="td">R$ {{ product.valueTo.toFixed(2) }}</td>
+                            
+                           
+                            <td class="td">
+                              <button @click="() => removeProduct(product.id)" class="text-red-500">
+                                <i class="pi pi-trash"></i>
+                              </button>
+                            </td>
+                           
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+                    </div>
+                    <div v-else>
+                      <p>O carrinho está vazio</p>
+                    </div>
                   </template>
                 </Card>
 
-                
                 <div class="flex flex-col flex-grow gap-4 ml-5">
                   <Card class="card bg-white-100">
                     <template #title>
@@ -55,11 +99,20 @@
                     <template #content>
                       <div class="card-content">
                         <fieldset>
-                          <p>Valor dos produtos: <span class="font-semibold">R$ 3250,00</span></p>
-                          <Divider /> 
-                          <p>Frete: <span class="font-semibold">R$ 12,00</span></p>
+                          <div class="flex justify-between">
+                            <p class="text-left">Valor dos produtos:</p>
+                            <span class="ml-auto text-right font-semibold">R$ {{ totalProductValue }}</span>
+                          </div>
                           <Divider />
-                          <p>Total: <span class="font-semibold">R$ 3262,00</span></p>
+                          <div class="flex justify-between">
+                            <p class="text-left">Frete:</p>
+                            <span class="ml-auto text-right font-semibold">R$ 12,00</span>
+                          </div>
+                          <Divider />
+                          <div class="flex justify-between">
+                            <p class="text-left">Total:</p>
+                            <span class="ml-auto text-right font-semibold">R$ {{ totalValue }}</span>
+                          </div>
                         </fieldset>
                       </div>
                     </template>
@@ -68,15 +121,15 @@
                     <template #content>
                       <div class="card-content flex flex-col h-full justify-end">
                         <Button class="mt-auto bg-yellow-400 text-black font-semibold py-2" label="CONTINUAR PEDIDO" @click="activateCallback('2')" />
-                        <p class="text-center mt-2">Continuar comprando</p>
+                      <div class="flex justify-center mt-auto">
+                        <NuxtLink to="/" class="hover:underline font-bold">Continuar comprando</NuxtLink>
                       </div>
+                    </div>
                     </template>
                   </Card>
                 </div>
               </div>
-            
-            
-        </StepPanel>
+            </StepPanel>
         <StepPanel v-slot="{ activateCallback }" value="2">
           <div class="flex mt-2 ml-5">
                 
@@ -95,11 +148,20 @@
                     <template #content>
                       <div class="card-content">
                         <fieldset>
-                          <p>Valor dos produtos: <span class="font-semibold">R$ 3250,00</span></p>
-                          <Divider /> 
-                          <p>Frete: <span class="font-semibold">R$ 12,00</span></p>
+                          <div class="flex justify-between">
+                            <p class="text-left">Valor dos produtos:</p>
+                            <span class="ml-auto text-right font-semibold">R$ {{ totalProductValue }}</span>
+                          </div>
                           <Divider />
-                          <p>Total: <span class="font-semibold">R$ 3262,00</span></p>
+                          <div class="flex justify-between">
+                            <p class="text-left">Frete:</p>
+                            <span class="ml-auto text-right font-semibold">R$ 12,00</span>
+                          </div>
+                          <Divider />
+                          <div class="flex justify-between">
+                            <p class="text-left">Total:</p>
+                            <span class="ml-auto text-right font-semibold">R$ {{ totalValue }}</span>
+                          </div>
                         </fieldset>
                       </div>
                     </template>
@@ -108,13 +170,14 @@
                     <template #content>
                       <div class="card-content flex flex-col h-full justify-end">
                         <Button class="mt-auto bg-yellow-400 text-black font-semibold py-2" label="CONTINUAR PEDIDO" @click="activateCallback('3')" />
-                        <p class="text-center mt-2">Continuar comprando</p>
+                      <div class="flex justify-center mt-auto">
+                        <NuxtLink to="/" class="hover:underline font-bold">Continuar comprando</NuxtLink>
                       </div>
+                    </div>
                     </template>
                   </Card>
                 </div>
               </div>
-            
 
         </StepPanel>     
       
@@ -127,7 +190,6 @@
                   </template>
                 </Card>
 
-                
                 <div class="flex flex-col flex-grow gap-4 ml-5">
                   <Card class="card bg-white-100">
                     <template #title>
@@ -136,11 +198,20 @@
                     <template #content>
                       <div class="card-content">
                         <fieldset>
-                          <p>Valor dos produtos: <span class="font-semibold">R$ 3250,00</span></p>
-                          <Divider /> 
-                          <p>Frete: <span class="font-semibold">R$ 12,00</span></p>
+                          <div class="flex justify-between">
+                            <p class="text-left">Valor dos produtos:</p>
+                            <span class="ml-auto text-right font-semibold">R$ {{ totalProductValue }}</span>
+                          </div>
                           <Divider />
-                          <p>Total: <span class="font-semibold">R$ 3262,00</span></p>
+                          <div class="flex justify-between">
+                            <p class="text-left">Frete:</p>
+                            <span class="ml-auto text-right font-semibold">R$ 12,00</span>
+                          </div>
+                          <Divider />
+                          <div class="flex justify-between">
+                            <p class="text-left">Total:</p>
+                            <span class="ml-auto text-right font-semibold">R$ {{ totalValue }}</span>
+                          </div>
                         </fieldset>
                       </div>
                     </template>
@@ -149,13 +220,14 @@
                     <template #content>
                       <div class="card-content flex flex-col h-full justify-end">
                         <Button class="mt-auto bg-yellow-400 text-black font-semibold py-2" label="CONTINUAR PEDIDO" @click="activateCallback('4')" />
-                        <p class="text-center mt-2">Continuar comprando</p>
+                      <div class="flex justify-center mt-auto">
+                        <NuxtLink to="/" class="hover:underline font-bold">Continuar comprando</NuxtLink>
                       </div>
+                    </div>
                     </template>
                   </Card>
                 </div>
               </div>
-            
 
         </StepPanel>
     
@@ -177,11 +249,20 @@
                     <template #content>
                       <div class="card-content">
                         <fieldset>
-                          <p>Valor dos produtos: <span class="font-semibold">R$ 3250,00</span></p>
-                          <Divider /> 
-                          <p>Frete: <span class="font-semibold">R$ 12,00</span></p>
+                          <div class="flex justify-between">
+                            <p class="text-left">Valor dos produtos:</p>
+                            <span class="ml-auto text-right font-semibold">R$ {{ totalProductValue }}</span>
+                          </div>
                           <Divider />
-                          <p>Total: <span class="font-semibold">R$ 3262,00</span></p>
+                          <div class="flex justify-between">
+                            <p class="text-left">Frete:</p>
+                            <span class="ml-auto text-right font-semibold">R$ 12,00</span>
+                          </div>
+                          <Divider />
+                          <div class="flex justify-between">
+                            <p class="text-left">Total:</p>
+                            <span class="ml-auto text-right font-semibold">R$ {{ totalValue }}</span>
+                          </div>
                         </fieldset>
                       </div>
                     </template>
@@ -190,8 +271,10 @@
                     <template #content>
                       <div class="card-content flex flex-col h-full justify-end">
                         <Button class="mt-auto bg-yellow-400 text-black font-semibold py-2" label="CONTINUAR PEDIDO" @click="activateCallback('5')" />
-                        <p class="text-center mt-2">Continuar comprando</p>
+                      <div class="flex justify-center mt-auto">
+                        <NuxtLink to="/" class="hover:underline font-bold">Continuar comprando</NuxtLink>
                       </div>
+                    </div>
                     </template>
                   </Card>
                 </div>
@@ -208,7 +291,6 @@
                   </template>
                 </Card>
 
-                
                 <div class="flex flex-col flex-grow gap-4 ml-5">
                   <Card class="card bg-white-100">
                     <template #title>
@@ -217,11 +299,20 @@
                     <template #content>
                       <div class="card-content">
                         <fieldset>
-                          <p>Valor dos produtos: <span class="font-semibold">R$ 3250,00</span></p>
-                          <Divider /> 
-                          <p>Frete: <span class="font-semibold">R$ 12,00</span></p>
+                          <div class="flex justify-between">
+                            <p class="text-left">Valor dos produtos:</p>
+                            <span class="ml-auto text-right font-semibold">R$ {{ totalProductValue }}</span>
+                          </div>
                           <Divider />
-                          <p>Total: <span class="font-semibold">R$ 3262,00</span></p>
+                          <div class="flex justify-between">
+                            <p class="text-left">Frete:</p>
+                            <span class="ml-auto text-right font-semibold">R$ 12,00</span>
+                          </div>
+                          <Divider />
+                          <div class="flex justify-between">
+                            <p class="text-left">Total:</p>
+                            <span class="ml-auto text-right font-semibold">R$ {{ totalValue }}</span>
+                          </div>
                         </fieldset>
                       </div>
                     </template>
@@ -230,8 +321,10 @@
                     <template #content>
                       <div class="card-content flex flex-col h-full justify-end">
                         <Button class="mt-auto bg-yellow-400 text-black font-semibold py-2" label="CONTINUAR PEDIDO" @click="activateCallback('1')" />
-                        <p class="text-center mt-2">Continuar comprando</p>
+                      <div class="flex justify-center mt-auto">
+                        <NuxtLink to="/" class="hover:underline font-bold">Continuar comprando</NuxtLink>
                       </div>
+                    </div>
                     </template>
                   </Card>
                 </div>
@@ -250,6 +343,18 @@
 </template>
 
 <script setup>
+  import Button from 'primevue/button';
+  import { computed } from 'vue';
+  const {cart, products, removeProduct} = useCart();
+  const totalProductValue = computed(() => {
+  return cart.reduce((total, product) => total + (product.valueTo * product.quantity), 0).toFixed(2)
+})
+
+const totalValue = computed(() => {
+  // frete fixo de R$ 12,00
+  const shippingCost = 12.00
+  return (parseFloat(totalProductValue.value) + shippingCost).toFixed(2)
+})
 
 
 </script>
@@ -267,4 +372,53 @@
 .card-content {
   @apply flex flex-col gap-2 h-full;
 }
+
+.card-left {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.th{
+  font-weight: normal;
+  color: black;
+  font-size: small;
+  
+}
+
+.td{
+
+
+  text-align: center;
+  width: 200px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.product-image {
+  width: auto; 
+  height: auto; 
+}
+
+.button-icons {
+  display: flex;
+  flex-direction: column; /* Alinha os ícones em coluna */
+  align-items: center; /* Centraliza os ícones horizontalmente */
+}
+
+.button-icons i {
+  margin: 0px 0; /* Adiciona espaçamento entre os ícones */
+}
+.border-b {
+    border-bottom: 1px solid #ddd; 
+  }
+
+
+
 </style>

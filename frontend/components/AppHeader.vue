@@ -19,12 +19,15 @@
           </div>
         </div>
         <Divider layout="vertical" />
-        <div class="flex gap-3 items-center">
-          <i class="pi pi-shopping-cart text-2xl"></i>
+        <div class="flex gap-3 items-center"> <!--parte de carrinho na header-->
+          <NuxtLink to="/carrinho" class="flex gap-3 items-center">
+          <i class="pi pi-shopping-cart text-2xl"></i> <!--icon de carrinho -->
           <div>
             <p>Carrinho</p>
-            <p class="font-bold">{{ formatCurrency(price) }}</p>
+            <p class="font-bold">{{ formatCurrency(price) }}</p> <!--atualização de preço-->
           </div>
+          </NuxtLink>
+
         </div>
       </Container>
     </div>

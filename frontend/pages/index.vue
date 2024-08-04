@@ -1,4 +1,4 @@
-
+<!--TelaInicial-->
 <template>
   <Container>
     <Swiper
@@ -39,20 +39,8 @@
 </template>
 
 <script setup>
-   const products = ref([]);
+const {products} = useCart();
 
-for (let i = 0; i < 10; i++){
-  products.value.push({
-    "id": i,
-    "name": `Product ${i}`,
-    "valueFrom": 1000,
-    "valueTo": 100,
-    "discountPercentage": 90,
-    "brand": "Genérico"
-
-
-  });
-}
 
 
 
