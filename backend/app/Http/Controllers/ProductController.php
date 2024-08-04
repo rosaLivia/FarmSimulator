@@ -14,12 +14,12 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'product_code' => 'required|varchar(10)',
-            'name' => 'required',
-            'mark' => 'required',
-            'description' => 'sometimes|varchar(100)',
+            'product_code' => 'required|string|max:8',
+            'name' => 'required|string|max:40',
+            'mark' => 'required|string|max:20',
+            'description' => 'sometimes|string|max:100',
             'price' => 'required|numeric',
-            'instructions' => 'sometimes|varchar(100)',
+            'instructions' => 'sometimes|string|max:100',
             'stock' => 'required|integer'
         ]);
 
