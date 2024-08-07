@@ -77,5 +77,6 @@ Route::post('/cart', [CartController::class, 'store']);
 Route::put('/cart/{id}', [CartController::class, 'update']);
 Route::delete('/cart{id}', [CartController::class, 'destroy']);
 
+#Rota de login
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'login']);
