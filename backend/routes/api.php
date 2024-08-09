@@ -79,4 +79,7 @@ Route::delete('/cart{id}', [CartController::class, 'destroy']);
 
 #Rota de login
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'login']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/users/{user}', [UserController::class, 'show'])->middleware('ability:user-get');
+    Route::post('/logout', [AuthController::class, 'logout']);
+});

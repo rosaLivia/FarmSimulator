@@ -17,8 +17,8 @@ return new class extends Migration
             $table->timestamps(); // Adiciona colunas "created_at" e "updated_at"
 
             // Definir chaves estrangeiras
-            $table->foreign('id_buy')->references('id')->on('buys')->onDelete('cascade');
-            $table->foreign('id_drug')->references('id')->on('drugs')->onDelete('cascade');
+            $table->foreign('id_order')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
         });
     }
 };

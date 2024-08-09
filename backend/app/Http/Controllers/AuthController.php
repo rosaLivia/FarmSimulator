@@ -19,7 +19,7 @@ class AuthController extends Controller
   {
     if (Auth::attempt($request->only('email', 'password'))) {
       return $this->response('Authorized', 200, [
-        'token' => $request->user()->createToken('user')->plainTextToken
+        'token' => $request->user()->createToken('autorizar-receita', 'cadastrar-funcionario', 'cadastrar produto')->plainTextToken
       ]);
     }
     return $this->response('Not Authorized', 403);

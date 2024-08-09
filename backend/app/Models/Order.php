@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id';
     protected $fillable = [
-        'id',
         'id_cliente',
         'dt', #data da compra
         'id_payment_method',

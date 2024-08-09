@@ -19,10 +19,10 @@ return new class extends Migration
 
             // Definir chaves estrangeiras
             //->onDelete('cascade') especifica que se um registro nas tabelas referenciadas for deletado,  todos os registros relecionados a tabela orders sera deletado
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_payment_method')->references('id')->on('paymentmethods')->onDelete('cascade');
             $table->foreign('id_recipe')->references('id')->on('recipes')->onDelete('cascade');
-            $table->foreign('id_entrega')->references('id')->on('entregas')->onDelete('cascade');
+            $table->foreign('id_entrega')->references('id')->on('deliveries')->onDelete('cascade');
         });
     }
     
