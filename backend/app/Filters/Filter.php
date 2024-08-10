@@ -1,15 +1,28 @@
 <?php
 
-namespace App\Filters;
+/*
+Descrição:
+Define filtros que ajustam as consultas do eloquent para serem legiveis para sql
 
+Exemplo:
+"Me mostra a tabela dos produtos" -> "From products show *"
+*/
+
+namespace App\Filters; #Define o escopo de atuação das variáveis desse código.
+
+
+#Declaração de classes que serão usadas ao longo do código.
 use DeepCopy\Exception\PropertyException;
 use Exception;
 use Illuminate\Http\Request;
 
-abstract class Filter
+#Criação de uma classe
+abstract class Filter #Declara um classe sem nome que irá herdar propriedades da classe Filter
 {
+  #Vai criar um array que não poderá ser acessado fora desse código
   protected array $allowedOperatorsFields = [];
 
+  #Vai criar um array que não poderá ser acessado fora desse código
   protected array $transalateOperatorsFields = [
     'gt' => '>',
     'gte' => '>=',
@@ -20,6 +33,7 @@ abstract class Filter
     'in' => 'in',
   ];
 
+  #Vai criar uma função chamada filter que poderá ser acessada fora desse código
   public function filter(Request $request)
   {
     $where = [];

@@ -1,5 +1,10 @@
 <?php
 
+/*
+Descrição:
+Esse arquivo tem por finalidade criar rotas para api's, ou seja, webapps com front e back separados.
+*/
+
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -11,6 +16,7 @@ use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentmethodController;
 use App\Http\Controllers\RecipeController;
+use Illuminate\Http\Request;
 use App\Models\User;
 
 Route::get('/', function () {
@@ -79,7 +85,6 @@ Route::delete('/cart{id}', [CartController::class, 'destroy']);
 
 #Rota de login
 Route::post('/login', [AuthController::class, 'login']);
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/users/{user}', [UserController::class, 'show'])->middleware('ability:user-get');
-    Route::post('/logout', [AuthController::class, 'logout']);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request){
+    return $request->user();
 });

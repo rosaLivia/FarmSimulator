@@ -1,35 +1,43 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; #Define o escopo das variáveis desse código
 
-use App\Traits\HttpResponses;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+#Import de classes que serão usadas ao longo do código
+use App\Http\Controllers\Controller; #Importa as configurações do controller
+use Illuminate\Http\Request; #Importa o mecânismo de consulta no banco de dados.
+use Illuminate\Support\Facades\Hash; #Importa o mecânismo de hash.
+use Illuminate\Validation\ValidationException; #Importa mecânismo de erro de validação.
 
-// 23|3EqyxJQPBQdVFedW4wTMXvVUuIo8N5sEwSOzGw50 -> invoice
-// 24|og2oFelknKk5QNdLhmyHQ26hsSF8umPY7oyGEttT -> user
-// 25|rqAUeXZnGQFRxvcd01moy7Jf5t593EuobJpNAieV -> teste
-
-class AuthController extends Controller
-{
-
-  use HttpResponses;
-
-  public function login(Request $request)
-  {
-    if (Auth::attempt($request->only('email', 'password'))) {
-      return $this->response('Authorized', 200, [
-        'token' => $request->user()->createToken('autorizar-receita', 'cadastrar-funcionario', 'cadastrar produto')->plainTextToken
-      ]);
-    }
-    return $this->response('Not Authorized', 403);
-  }
-
-
-  public function logout(Request $request)
-  {
-    $request->user()->currentAccessToken()->delete();
-
-    return $this->response('Token Revoked', 200);
-  }
+#Criação de classe
+class AuthController extends Controller{
+	#Criação de função de validação de login
+	public function login(Request $request){
+		$request->validate([
+			'email' => 'required|email',
+			'password' => 'required'
+		]);
+		$user = \App\Models\User::where('email', $request->email)->first();
+		
+		if (!$user){
+			throw ValidationException::withMessages([
+				'email' => ['As credenciais fornecidas estão incorretas.']
+			]);
+		}
+		if (!Hash::check($request->password, $user->password)){
+			throw ValidationException::withMessages([
+				'email' => ['As credenciais fornecidas estão incorretas.']
+			]);
+		}
+		
+		#Criação do token de permissão do usuário
+		$token = $user->createToken('api-token')->plainTextToken; #Gera o token
+		return response()->json([ #Retorna o token gerado em formato json
+			'token' => $token
+		]);
+	}
+	
+	#Criação de função de logout
+	public function logout(Request $request){
+		
+	}
 }
