@@ -12,6 +12,7 @@ class Deliveries extends Model
         'id',
         'arrived_date',  #previsao de entrega
         'codigo',   #codigo de rastreio
+        
 
     ];
 }

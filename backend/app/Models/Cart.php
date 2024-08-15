@@ -13,6 +13,7 @@ class Cart extends Model
         'id_buy',
         'id_drug',
         'quant',
-        'price',  
+        'price',
+        'preco_unitario'  
     ];
 }
