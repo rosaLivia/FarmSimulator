@@ -12,34 +12,37 @@ use App\Models\Employees;
 
 #Criação de classe
 class AuthController extends Controller{
-	#Criação de função de validação de login
-	public function login(Request $request){
-		$request->validate([
-			'email' => 'required|email',
-			'password' => 'required'
-		]);
-		$user = \App\Models\User::where('email', $request->email)->first();
-		$employeers = Employees::where('email', $request->email)->first();
 
-		if (!$user){
-			throw ValidationException::withMessages([
-				'email' => ['As credenciais fornecidas estão incorretas.']
-			]);
-		} elseif ($employeers){
-			if (!Hash::check($request->password, $employeers->password)) {
-				throw ValidationException::withMessages([
-					'email' => ['As credenciais fornecidas estão incorretas.']
-				]);
-			}
-			$permissions = $employeers->administrator ? ['create','update','view','delete'] : ['create','update','view'];
-			$token = $employeers->createToken('employeers-token', $permissions)->plainTextToken;
-		} else {
-			throw ValidationException::withMessages([
-				'email' => ['As credenciais fornecidas estão incorretas.']
-			]);
-		}
-		return response()->json(['token' => $token]);
-	}
+	#Criação de função de validação de login
+	public function login(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
+
+    $user = \App\Models\User::where('email', $request->email)->first();
+
+    if (!$user || !Hash::check($request->password, $user->password)) {
+        throw ValidationException::withMessages([
+            'email' => ['As credenciais fornecidas estão incorretas.']
+        ]);
+    }
+
+    // Verifique o tipo de usuário e gere o token com as permissões adequadas
+    if ($user instanceof \App\Models\User) {
+        $token = $user->createToken('user-token', ['user'])->plainTextToken;
+    } elseif ($user instanceof \App\Models\Employees) {
+        if ($user->admin) {
+            $token = $user->createToken('admin-token', ['admin'])->plainTextToken;
+        } else {
+            $token = $user->createToken('employeer-token', ['employeer'])->plainTextToken;
+        }
+    }
+
+    return response()->json(['token' => $token]);
+}
+
 	
 	#Criação de função de logout
 	public function logout(Request $request) {
