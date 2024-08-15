@@ -34,7 +34,8 @@ Administrador:
 
 
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
 
 #Users
 Route::middleware(['auth:sanctum','can:employeer'])->get('/users',[UserController::class, 'index']);
