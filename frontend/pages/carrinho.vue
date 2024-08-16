@@ -349,58 +349,29 @@
             
 
         </StepPanel>
-        <StepPanel v-slot="{ activateCallback }" value="5">
-          <div class="flex mt-2 ml-5">
-                
-                <Card class="card-left bg-white-200 w-[600px]">
-                  <template #content>
-                    <p>conteúdo compra</p>
-                  </template>
-                </Card>
-
-                <div class="flex flex-col flex-grow gap-4 ml-5">
-                  <Card class="card bg-white-100">
-                    <template #title>
-                      <h2 class="font-semibold">RESUMO</h2>
-                    </template>
-                    <template #content>
-                      <div class="card-content">
-                        <fieldset>
-                          <div class="flex justify-between">
-                            <p class="text-left">Valor dos produtos:</p>
-                            <span class="ml-auto text-right font-semibold">R$ {{ totalProductValue }}</span>
-                          </div>
-                          <Divider />
-                          <div class="flex justify-between">
-                            <p class="text-left">Frete:</p>
-                            <span class="ml-auto text-right font-semibold">R$ 12,00</span>
-                          </div>
-                          <Divider />
-                          <div class="flex justify-between">
-                            <p class="text-left">Total:</p>
-                            <span class="ml-auto text-right font-semibold">R$ {{ totalValue }}</span>
-                          </div>
-                        </fieldset>
-                      </div>
-                    </template>
-                  </Card>
+                    <StepPanel v-slot="{ activateCallback }" value="5">
+              <div class="flex flex-col items-center justify-start min-h-screen bg-gray-50 pt-8">
+                <div class="bg-white rounded-lg shadow-md p-8 max-w-md text-center">
+                  <h1 class="text-2xl font-bold mb-4">Compra realizada com sucesso!</h1>
+                  <div class="flex justify-center my-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <p class="text-gray-600 mb-8">Em breve você receberá em seu e-mail os detalhes referente ao pagamento e entrega.</p>
                   
-                  <Card class="card-second bg-white">
-                    <template #content>
-                      <div class="card-content flex flex-col h-full justify-end">
-                        <Button class="mt-auto bg-yellow-400 text-black font-semibold py-2" label="CONTINUAR PEDIDO" @click="activateCallback('1')" />
-                      <div class="flex justify-center mt-auto">
-                        <NuxtLink to="/" class="hover:underline font-bold">Continuar comprando</NuxtLink>
-                      </div>
-                    </div>
-                    
-                    </template>
-                  </Card>
+                  <div class="flex justify-center space-x-4">
+                    <NuxtLink to="/"class="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 px-4 rounded">
+                      Continuar comprando
+                    </NuxtLink>
+                    <button class="border border-gray-400 text-gray-800 font-semibold py-2 px-4 rounded hover:bg-gray-100">
+                      Ver resumo do pedido
+                    </button>
+                  </div>
                 </div>
               </div>
-            
+</StepPanel>
 
-        </StepPanel>
 
 
     </StepPanels>
@@ -504,12 +475,12 @@ const packages = ref([
 
 .button-icons {
   display: flex;
-  flex-direction: column; /* Alinha os ícones em coluna */
-  align-items: center; /* Centraliza os ícones horizontalmente */
+  flex-direction: column; 
+  align-items: center; 
 }
 
 .button-icons i {
-  margin: 0px 0; /* Adiciona espaçamento entre os ícones */
+  margin: 0px 0; 
 }
 .border-b {
     border-bottom: 1px solid #ddd; 
