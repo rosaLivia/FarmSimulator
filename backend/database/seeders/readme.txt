@@ -2,9 +2,7 @@ após configurado o seeder, é necessario executar com o comando:
 
 ./vendor/bin/sail artisan db:seed --class='nome_do_seeder';
 
-ou, chamar o seeder dentro do arquivo DatabaseSeeder.php que ai ele vai rodar TODOS os seeders listados no `DatabaseSeeder.php`
 
-`./vendor/bin/sail artisan db:seed `
 
 É necessario ir migrando os seeders com o comando abaixo de acordo com a ordem especificada para evitar erros entre chaves estrangeiras:
 artisan db:seed --class=UserSeeder
