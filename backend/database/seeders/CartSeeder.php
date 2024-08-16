@@ -22,6 +22,7 @@ class CartSeeder extends Seeder
             'id_buy'=> $order->id,
             'id_drug'=> $product->id,
             
+            
       
         ]);
        

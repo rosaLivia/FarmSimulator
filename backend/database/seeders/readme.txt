@@ -11,9 +11,9 @@ artisan db:seed --class=UserSeeder
 
 1)./vendor/bin/sail artisan db:seed --class=UserSeeder
 2)./vendor/bin/sail artisan db:seed --class=EmployeesSeeder
-3)./vendor/bin/sail artisan db:seed --class=DeliveriesSeeder  **refazer
+3)./vendor/bin/sail artisan db:seed --class=DeliveriesSeeder  
 4)./vendor/bin/sail artisan db:seed --class=RecipeSeeder
-5)./vendor/bin/sail artisan db:seed --class=ProductSeeder     **refazer
+5)./vendor/bin/sail artisan db:seed --class=ProductSeeder     
 6)./vendor/bin/sail artisan db:seed --class=PaymentmethodSeeder
 7)./vendor/bin/sail artisan db:seed --class=OrderSeeder
 8)./vendor/bin/sail artisan db:seed --class=CartSeeder

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Deliveries;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 
 class DeliveriesSeeder extends Seeder
 {
@@ -12,6 +13,8 @@ class DeliveriesSeeder extends Seeder
      */
     public function run(): void
     {
+
         Deliveries::factory()->count(10)->create();
+        
     }
 }

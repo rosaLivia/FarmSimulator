@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
+use App\Models\Order;
+use App\Models\Deliveries;
 
 class OrderSeeder extends Seeder
 {
@@ -12,6 +14,11 @@ class OrderSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        //Cria 10 registros na tabela orders com chave estrangeira para deliveries
+        Order::factory()->count(10)->create([
+            'id_entrega' => Deliveries::inRandomOrder()->first()->id,
+            
+        ]);
     }
+    
 }

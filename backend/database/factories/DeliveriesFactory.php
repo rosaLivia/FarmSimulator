@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
-use Database\Factories\OrderFactory;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Deliveries>
@@ -21,7 +21,7 @@ class DeliveriesFactory extends Factory
 
         $date = $this->faker->dateTimeThisYear(); // Gera uma data aleatória deste ano
         return [
-            //'id' => OrderFactory::factory(),    
+           
             'deliveries'=>$this->faker->date(),
             'codigo'=>$this->faker->bothify('??###??'),
             'arrived_date'=>Carbon::instance($date)->addDays(7), // Adiciona 7 dias à data gerada

@@ -16,15 +16,18 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $marcas =['Bio Farma','CIMED','EMS'];
+        $medications = ['Ibuprofen', 'Amoxicillin', 'Paracetamol', 'Metformin', 'Ciprofloxacin'];
         return [
-            $medications = ['Ibuprofen', 'Amoxicillin', 'Paracetamol', 'Metformin', 'Ciprofloxacin'],
-            'name'=>$this->faker->randomElements($medications),
+            
+            'name'=>$this->faker->randomElement($medications),
             'codigo'=>$this->faker->bothify('AABB??'),
-            $marcas =['Bio Farma','CIMED','EMS'],
-            'descricao'=> $this->faker->text("Essa é uma descrição de produto"), // O parâmetro `200` indica o número de caracteres.
-            'instrucao'=> $this->faker->text("Tomar apenas em caso de dor ou febre"), 
-            'valor'=>$this->faker->randomFloat(2,1,50),
-            'Q_estoque'=>$this->faker->random_int(0,100)
+            'marca'=>$this->faker->randomElement($marcas),
+            'description'=> "Essa é uma descrição de produto", // texto estático
+            'instruction'=> "Tomar apenas em caso de dor ou febre", // texto estático
+            'recomendation'=> "Tomar apenas 1 comprimido em caso de dor ou febre", // texto estático
+            'price'=>$this->faker->randomFloat(2,1,100),
+            'stock'=>$this->faker->numberBetween(0,100),
 
 
         

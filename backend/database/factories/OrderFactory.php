@@ -25,12 +25,12 @@ class OrderFactory extends Factory
         static $id_order =1;
         return [
             
-            'id'=>$id_order++, #Id da compra 
-            'id_cliente'=>User::factory(),
+            'id'=>$id_order++, #Id da compra
+            'user_id'=>User::factory(),
             'dt'=>$this->faker->dateTime,
             'id_payment_method'=>Paymentmethod::factory(),// Cria um Paymentmethod e usa seu id buscado factory Paymentmethod 
             'id_recipe'=>$this->faker->numberBetween(1,4),
-            'id_delivery'=>Deliveries::factory(),
+            'id'=>Deliveries::factory(),
 
         ];
     }

@@ -19,7 +19,8 @@ class RecipeFactory extends Factory
     {
         return [
             
-            'idAutorizador'=>Employees::factory(),// Cria uma coluna id autorizador e usa seu id buscado factory Employees
+            'arquivo' => $this->faker->word(),
+            'id_autorizador' => Employees::factory(), // Gera automaticamente um registro em Employees e pega seu ID
         ];
     }
 }
