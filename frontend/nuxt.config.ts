@@ -22,7 +22,7 @@ const MyPreset = definePreset(Aura, {
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  css: ['assets/css/main.css'],
+  css: ['assets/scss/main.scss'],
   modules: [
     '@primevue/nuxt-module',
     '@vee-validate/nuxt',
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
   ],
   primevue: {
     options: {
-        ripple: true,
+        ripple: false,
         theme: {
             preset: MyPreset,
             options: {
