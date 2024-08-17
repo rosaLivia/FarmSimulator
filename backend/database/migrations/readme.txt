@@ -10,6 +10,6 @@ Essa é a ordem correta após o erro migrate da tabela orders:
 2)./vendor/bin/sail artisan migrate --path=/database/migrations/2024_08_05_200014_create_recipe_table.php
 3)./vendor/bin/sail artisan migrate --path=/database/migrations/2024_08_05_200132_create_deliveries_table.php
 4)./vendor/bin/sail artisan migrate --path=/database/migrations/2024_08_05_200042_create_paymentmethod_table.php
-5)./vendor/bin/sail artisan migrate --path=/database/migrations/2024_08_05_200100_create_orders_table.php
-6)./vendor/bin/sail artisan migrate --path=/database/migrations/2024_08_05_200142_create_cart_table.php
+5)./vendor/bin/sail artisan migrate --path=/database/migrations/2024_08_10_200100_create_orders_table.php
+6)./vendor/bin/sail artisan migrate --path=/database/migrations/2024_08_11_200142_create_cart_table.php
 

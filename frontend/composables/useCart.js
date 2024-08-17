@@ -6,14 +6,7 @@ const cart = reactive({
   items: []
 });
 
-const products = ref([
-  { id: 1, name: 'Dipirona', image: '/img/dipirona-monoidratada.jpg', valueFrom: 10, valueTo: 5.25, discountPercentage: 10, brand: 'Marca A' },
-  { id: 2, name: 'Produto B', image: '/img/esp.webp', valueFrom: 100, valueTo: 60.00, discountPercentage: 10, brand: 'Marca B', prescription: 'requer prescrição' },
-  { id: 3, name: 'Trembolona', image: '/img/TREMBOLONA.jpg', valueFrom: 1500, valueTo: 1350, discountPercentage: 10, brand: 'Marca C', prescription: 'requer prescrição' },
-  { id: 4, name: 'Dipirona', image: '/img/dipirona-monoidratada.jpg', valueFrom: 10, valueTo: 5.25, discountPercentage: 10, brand: 'Marca A' },
-  { id: 5, name: 'Produto B', image: '/img/esp.webp', valueFrom: 100, valueTo: 60.00, discountPercentage: 10, brand: 'Marca B' },
-  { id: 6, name: 'Trembolona', image: '/img/TREMBOLONA.jpg', valueFrom: 1500, valueTo: 1350, discountPercentage: 10, brand: 'Marca C' },
-]);
+const products = await $fetch('http://localhost/api/products');
 
 
 const addToCart = (product) => {

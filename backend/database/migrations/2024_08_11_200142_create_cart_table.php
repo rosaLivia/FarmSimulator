@@ -10,8 +10,8 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id(); // Adiciona uma coluna de chave primária "id"
-            $table->unsignedBigInteger('id_buy'); // Adiciona uma coluna "id_buy" do tipo inteiro sem sinal
-            $table->unsignedBigInteger('id_drug'); // Adiciona uma coluna "id_drug" do tipo inteiro sem sinal
+            $table->unsignedBigInteger('id_order'); // Adiciona uma coluna "id_order" do tipo inteiro sem sinal
+            $table->unsignedBigInteger('id_product'); // Adiciona uma coluna "id_product" do tipo inteiro sem sinal
             $table->integer('quant'); // Adiciona uma coluna "quant" do tipo inteiro
             $table->decimal('price', 8, 2); // Adiciona uma coluna "price" do tipo decimal com 8 dígitos totais e 2 casas decimais
             $table->timestamps(); // Adiciona colunas "created_at" e "updated_at"

@@ -19,8 +19,8 @@ class CartSeeder extends Seeder
         $order = Order::first();
         $product = Product::first();
         Cart::factory()->count(10)->create([
-            'id_buy'=> $order->id,
-            'id_drug'=> $product->id,
+            'id_order'=> $order->id,
+            'id_product'=> $product->id,
             
             
       

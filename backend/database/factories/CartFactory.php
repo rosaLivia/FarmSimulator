@@ -20,11 +20,11 @@ class CartFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_buy'=> $this->faker->numberBetween(1,100),
-            'id_drug'=> $this->faker->numberBetween(1,100),
+            'id_order'=> $this->faker->numberBetween(1,100),
+            'id_product'=> $this->faker->numberBetween(1,100),
             'quant'=> $this->faker->numberBetween(1,100),
             //'price'=> $this->faker->randomFloat(2,1,100),
-            'preco_unitario'=>$this->faker->randomFloat(2,1,50),
+            'price'=>$this->faker->randomFloat(2,1,50),
             
 
         ];

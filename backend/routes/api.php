@@ -40,13 +40,13 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 #Users
 Route::middleware(['auth:sanctum','can:employeer'])->get('/users',[UserController::class, 'index']);
 Route::middleware(['auth:sanctum','can:employeer'])->get('/users/{id}',[UserController::class, 'show']);
-Route::middleware(['auth:sanctum','can:user'])->post('/users',[UserController::class, 'store']);
+Route::post('/users',[UserController::class, 'store']);
 Route::middleware(['auth:sanctum','can:employeer'])->put('/users/{id}',[UserController::class, 'update']);
 Route::middleware(['auth:sanctum','can:employeer'])->delete('/users/{id}',[UserController::class, 'destroy']);
 
 #Products
-Route::middleware(['auth:sanctum','can:user'])->get('/products',[ProductController::class, 'index']);
-Route::middleware(['auth:sanctum','can:user'])->get('/products/{id}',[ProductController::class, 'show']);
+Route::get('/products',[ProductController::class, 'index']);
+Route::get('/products/{id}',[ProductController::class, 'show']);
 Route::middleware(['auth:sanctum','can:employeer'])->post('/products',[ProductController::class, 'store']);
 Route::middleware(['auth:sanctum','can:employeer'])->put('/products/{id}',[ProductController::class, 'update']);
 Route::middleware(['auth:sanctum','can:employeer'])->delete('/products/{id}',[ProductController::class, 'destroy']);

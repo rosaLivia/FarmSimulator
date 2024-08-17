@@ -39,11 +39,7 @@
 </template>
 
 <script setup>
-const {products} = useCart();
-
-
-
-
+const { products } = useCart();
 </script>
 
 

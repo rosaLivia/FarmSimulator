@@ -11,8 +11,8 @@ class Cart extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'id_buy',
-        'id_drug',
+        'id_order',
+        'id_product',
         'quant',
         'price',
         'preco_unitario'  
