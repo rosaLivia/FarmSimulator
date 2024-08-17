@@ -12,6 +12,7 @@ class Deliveries extends Model
     protected $fillable = [
         'arrived_date',  #previsao de entrega
         'codigo',   #codigo de rastreio
+        
 
     ];
 }
