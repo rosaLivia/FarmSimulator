@@ -1,3 +1,4 @@
+<!--produtos paginados por Swipper-->
 <template>
   <h2 class="text-2xl font-bold text-primary mb-1">
     <slot name="title"></slot>

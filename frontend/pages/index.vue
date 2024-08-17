@@ -1,4 +1,4 @@
-
+<!--TelaInicial-->
 <template>
   <Container>
     <Swiper
@@ -39,7 +39,11 @@
 </template>
 
 <script setup>
-  const { data: products } = await useFetch('http://localhost:3001/produtos');
+const {products} = useCart();
+
+
+
+
 </script>
 
 
