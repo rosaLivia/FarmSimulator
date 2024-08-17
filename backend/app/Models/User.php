@@ -22,8 +22,12 @@ class User extends Authenticatable
     'cpf',
     'name',
     'email',
+    'cpf',
+    'phone',
+    'address',
     'password',
     'endereco',
+    'terms_accepted'
   ];
 
   /**

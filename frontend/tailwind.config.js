@@ -9,8 +9,16 @@ export default {
     "./error.vue",
   ],
   theme: {
-    extend: {},
+    container: {
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+      }
+    }
   },
+  darkMode: ['selector', '.p-dark-mode'],
   plugins: [require('tailwindcss-primeui')]
 }
 

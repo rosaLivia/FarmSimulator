@@ -1,35 +1,52 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; #Define o escopo das variáveis desse código
 
-use App\Traits\HttpResponses;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+#Import de classes que serão usadas ao longo do código
+use App\Http\Controllers\Controller; #Importa as configurações do controller
+use Illuminate\Http\Request; #Importa o mecânismo de consulta no banco de dados.
+use Illuminate\Support\Facades\Hash; #Importa o mecânismo de hash.
+use Illuminate\Validation\ValidationException; #Importa mecânismo de erro de validação.
+use App\Models\User;
+use App\Models\Employees;
 
-// 23|3EqyxJQPBQdVFedW4wTMXvVUuIo8N5sEwSOzGw50 -> invoice
-// 24|og2oFelknKk5QNdLhmyHQ26hsSF8umPY7oyGEttT -> user
-// 25|rqAUeXZnGQFRxvcd01moy7Jf5t593EuobJpNAieV -> teste
+#Criação de classe
+class AuthController extends Controller{
 
-class AuthController extends Controller
+	#Criação de função de validação de login
+	public function login(Request $request)
 {
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
 
-  use HttpResponses;
+    $user = \App\Models\User::where('email', $request->email)->first();
 
-  public function login(Request $request)
-  {
-    if (Auth::attempt($request->only('email', 'password'))) {
-      return $this->response('Authorized', 200, [
-        'token' => $request->user()->createToken('invoice')->plainTextToken
-      ]);
+    if (!$user || !Hash::check($request->password, $user->password)) {
+        throw ValidationException::withMessages([
+            'email' => ['As credenciais fornecidas estão incorretas.']
+        ]);
     }
-    return $this->response('Not Authorized', 403);
-  }
 
+    // Verifique o tipo de usuário e gere o token com as permissões adequadas
+    if ($user instanceof \App\Models\User) {
+        $token = $user->createToken('user-token', ['user'])->plainTextToken;
+    } elseif ($user instanceof \App\Models\Employees) {
+        if ($user->admin) {
+            $token = $user->createToken('admin-token', ['admin'])->plainTextToken;
+        } else {
+            $token = $user->createToken('employeer-token', ['employeer'])->plainTextToken;
+        }
+    }
 
-  public function logout(Request $request)
-  {
-    $request->user()->currentAccessToken()->delete();
+    return response()->json(['token' => $token]);
+}
 
-    return $this->response('Token Revoked', 200);
-  }
+	
+	#Criação de função de logout
+	public function logout(Request $request) {
+		$request->user()->currentAccessToken()->delete();
+		return response()->json(['message' => 'Deslogado com sucesso']);
+	}	
 }

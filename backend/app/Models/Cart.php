@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id';
+
     protected $fillable = [
-        'id',
         'id_buy',
         'id_drug',
         'quant',

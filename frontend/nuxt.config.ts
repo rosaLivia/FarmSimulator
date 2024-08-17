@@ -22,10 +22,18 @@ const MyPreset = definePreset(Aura, {
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  css: ['assets/css/main.css'],
-  modules: ["@primevue/nuxt-module", '@vee-validate/nuxt', "@nuxtjs/tailwindcss"],
+  css: ['assets/scss/main.scss'],
+  modules: [
+    '@primevue/nuxt-module',
+    '@vee-validate/nuxt',
+    '@nuxtjs/tailwindcss',
+    'nuxt-swiper',
+    "@nuxt/image",
+    'radix-vue/nuxt'
+  ],
   primevue: {
     options: {
+        ripple: false,
         theme: {
             preset: MyPreset,
             options: {
@@ -33,6 +41,9 @@ export default defineNuxtConfig({
             }
         }
     }
+  },
+  image: {
+    domains: ['placehold.co']
   },
   compatibilityDate: '2024-07-18'
 })

@@ -10,17 +10,21 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/image": "^1.7.0",
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@primevue/themes": "^4.0.0",
     "@vee-validate/nuxt": "^4.13.2",
     "nuxt": "^3.12.3",
+    "nuxt-swiper": "^1.2.2",
     "primeicons": "^7.0.0",
     "primevue": "^4.0.0",
+    "radix-vue": "^1.9.2",
     "tailwindcss-primeui": "^0.3.4",
     "vue": "latest",
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "@primevue/nuxt-module": "^4.0.0"
+    "@primevue/nuxt-module": "^4.0.0",
+    "sass": "^1.77.8"
   }
 }
